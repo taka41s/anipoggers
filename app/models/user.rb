@@ -1,9 +1,10 @@
 class User < ApplicationRecord
+  rolify
   has_secure_password
 
   validates :email, uniqueness: true
   validates :email, presence: true
-  validates :password, length: {minimum: 6, allow_nill: true}
+  validates :password, length: {minimum: 4, allow_nill: true}
 
   def password
     @password
@@ -11,7 +12,7 @@ class User < ApplicationRecord
 
   def password=(raw)
     @password = raw
-    self.password_digest = Bcrypt:Password.create(password)
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def is_password(password)

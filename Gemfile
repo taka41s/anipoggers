@@ -10,7 +10,8 @@ gem 'azure-storage-blob', '~> 2.0'
 gem 'azure_media_service', '~> 0.3.0'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-gem 'pundit', '~> 1.1'
+gem 'pundit', '~> 1.1', require: true
+gem 'rolify', '~> 5.2'
 # Use sqlite3 as the database for Active Record
 #gem "sqlite3", "~> 1.4"
 

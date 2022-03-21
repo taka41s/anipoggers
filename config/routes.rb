@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :videos
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get '/register' => 'users#new'
+  #resources :users, only:[:create]
+  post '/register' => 'users#create'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
 end
