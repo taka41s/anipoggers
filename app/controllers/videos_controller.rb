@@ -28,7 +28,7 @@ class VideosController < ApplicationController
           format.html { redirect_to video_url(@video), notice: "Video was successfully uploaded." }
           format.json { render :show, status: :created, location: @video }
         else
-          redirect_to root_path, alert: 'NOT AUTHORIZED'
+          redirect_to root_path, alert: 'Not authorized.'
         end
       end
     end
