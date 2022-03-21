@@ -21,15 +21,15 @@ class VideosController < ApplicationController
 
   # POST /videos or /videos.json
   def create
-    @video = Video.new(video_params)
-
-    respond_to do |format|
-      if @video.save
-        format.html { redirect_to video_url(@video), notice: "Video was successfully created." }
-        format.json { render :show, status: :created, location: @video }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
+    if current_user.has_role? :admin
+      @video = Video.new(video_params)
+      respond_to do |format|
+        if @video.save
+          format.html { redirect_to video_url(@video), notice: "Video was successfully uploaded." }
+          format.json { render :show, status: :created, location: @video }
+        else
+          redirect_to root_path, alert: 'NOT AUTHORIZED'
+        end
       end
     end
   end
