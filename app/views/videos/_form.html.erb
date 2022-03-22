@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  <%= current_user.roles.pluck(:name)%>
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
