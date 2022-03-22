@@ -5,7 +5,7 @@ ruby "3.0.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
-gem 'pg'
+gem 'pg', '~> 0.18.4'
 gem 'azure-storage-blob', '~> 2.0'
 gem 'azure_media_service', '~> 0.3.0'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
