@@ -5,8 +5,10 @@
 <%= video_tag url_for(@video.video), controls: true %>
 
 <div>
-  <%= link_to "Edit this video", edit_video_path(@video) %> |
-  <%= link_to "Back to videos", videos_path %>
+<%if current_user.has_role? :admin%>
+    <%= link_to "Edit this video", edit_video_path(@video) %> |
+    <%= link_to "Back to videos", videos_path %>
 
-  <%= button_to "Destroy this video", @video, method: :delete %>
+    <%= button_to "Destroy this video", @video, method: :delete %>
+<%end%>
 </div>

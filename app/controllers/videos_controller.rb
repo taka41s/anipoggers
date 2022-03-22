@@ -12,11 +12,20 @@ class VideosController < ApplicationController
 
   # GET /videos/new
   def new
-    @video = Video.new
+    if current_user.has_role? :admin
+      @video = Video.new
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /videos/1/edit
   def edit
+    if current_user.has_role? :admin
+
+    else 
+      redirect_to root_path
+    end
   end
 
   # POST /videos or /videos.json
@@ -28,7 +37,7 @@ class VideosController < ApplicationController
           format.html { redirect_to video_url(@video), notice: "Video was successfully uploaded." }
           format.json { render :show, status: :created, location: @video }
         else
-          redirect_to root_path, alert: 'Not authorized.'
+          redirect_to root_path, notice: 'Not authorized.'
         end
       end
     end
@@ -36,24 +45,28 @@ class VideosController < ApplicationController
 
   # PATCH/PUT /videos/1 or /videos/1.json
   def update
-    respond_to do |format|
-      if @video.update(video_params)
-        format.html { redirect_to video_url(@video), notice: "Video was successfully updated." }
-        format.json { render :show, status: :ok, location: @video }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
+    if current_user.has_role? :admin
+      respond_to do |format|
+        if @video.update(video_params)
+          format.html { redirect_to video_url(@video), notice: "Video was successfully updated." }
+          format.json { render :show, status: :ok, location: @video }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @video.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   # DELETE /videos/1 or /videos/1.json
   def destroy
-    @video.destroy
+    if current_user.has_role? :admin
+      @video.destroy
 
-    respond_to do |format|
-      format.html { redirect_to videos_url, notice: "Video was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to videos_url, notice: "Video was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 
