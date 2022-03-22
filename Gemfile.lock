@@ -272,7 +272,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
-  pg (~> 0.18.4)
+  pg
   puma (~> 5.0)
   pundit (~> 1.1)
   rails (~> 7.0.2, >= 7.0.2.3)
