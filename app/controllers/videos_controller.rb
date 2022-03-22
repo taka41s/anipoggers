@@ -12,11 +12,7 @@ class VideosController < ApplicationController
 
   # GET /videos/new
   def new
-    if current_user.has_role? :admin
       @video = Video.new
-    else
-      redirect_to root_path, alert: 'not authorized'
-    end
   end
 
   # GET /videos/1/edit
