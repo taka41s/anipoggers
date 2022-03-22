@@ -14,6 +14,10 @@ gem 'pundit', '~> 1.1', require: true
 gem 'rolify', '~> 5.2'
 # Use sqlite3 as the database for Active Record
 #gem "sqlite3", "~> 1.4"
+gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
+#gem 'carrierwave'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"

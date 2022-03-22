@@ -5,9 +5,8 @@
 <div id="videos">
   <% @videos.each do |video| %>
     <%= render video %>
-    <p>
-    
-      <%= link_to "Show this video", video %>
-    </p>
+    <%# <%= image_tag url_for(video.video.preview(resize_to_limit: [300, 170]).processed )%> 
+    <%# <%= video_tag url_for(video.video)%>
+    <%= link_to image_tag(video.video.preview(resize_to_limit: [300, 170]).processed ), video %> 
   <% end %>
 </div>

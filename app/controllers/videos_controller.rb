@@ -1,6 +1,5 @@
 class VideosController < ApplicationController
   before_action :set_video, only: %i[ show edit update destroy ]
-
   # GET /videos or /videos.json
   def index
     @videos = Video.all
@@ -30,6 +29,7 @@ class VideosController < ApplicationController
       @video = Video.new(video_params)
       respond_to do |format|
         if @video.save
+          @video.video.preview(resize_to_limit: [50, 50]).processed
           format.html { redirect_to video_url(@video), notice: "Video was successfully uploaded." }
           format.json { render :show, status: :created, location: @video }
         else
