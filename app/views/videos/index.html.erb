@@ -2,13 +2,11 @@
 
 <h1>Videos</h1>
 
-<p class="flash-notice"><%= params[:notice] %></p>
-
 <div id="videos">
   <% @videos.each do |video| %>
     <%= render video %>
     <p>
-
+    
       <%= link_to "Show this video", video %>
     </p>
   <% end %>
