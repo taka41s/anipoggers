@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :login, uniqueness: true
   validates :email, uniqueness: true
   validates :email, presence: true
-  validates :password, length: {minimum: 4, allow_nill: true}
+  validates :password, length: {minimum: 12, allow_nill: true}
   after_create :assign_default_role
   
   def assign_default_role

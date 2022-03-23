@@ -9,12 +9,16 @@ class SessionsController < ApplicationController
 
         if @user && @user.is_password(user_params[:password])
             session[:user_id] = @user.id
-            redirect_to '/videos/new'
+            redirect_to '/videos'
         else
             flash.now[:notice] = "Invalid login or password provided"
             render :login
-        end
-        
+        end 
+    end
+
+    def destroy
+        session[:user_id] = nil
+        redirect_to root_path, notice: 'Logged out'
     end
 
 

@@ -11,13 +11,16 @@ class VideosController < ApplicationController
 
   # GET /videos/new
   def new
+    if current_user.has_role? :admin
       @video = Video.new
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /videos/1/edit
   def edit
     if current_user.has_role? :admin
-
     else 
       redirect_to root_path
     end
@@ -32,10 +35,10 @@ class VideosController < ApplicationController
           @video.video.preview(resize_to_limit: [50, 50]).processed
           format.html { redirect_to video_url(@video), notice: "Video was successfully uploaded." }
           format.json { render :show, status: :created, location: @video }
-        else
-          redirect_to root_path, notice: 'Not authorized.'
         end
       end
+    else 
+      redirect_to root_path, notice: 'Not authorized'
     end
   end
 
@@ -51,6 +54,8 @@ class VideosController < ApplicationController
           format.json { render json: @video.errors, status: :unprocessable_entity }
         end
       end
+    else
+      redirect_to root_path, notice: 'Not authorized'
     end
   end
 
@@ -63,6 +68,12 @@ class VideosController < ApplicationController
         format.html { redirect_to videos_url, notice: "Video was successfully destroyed." }
         format.json { head :no_content }
       end
+    elsif current_user == nil
+      redirect_to root_path
+    elsif current_user.has_role? :newuser
+      redirect_to root_path
+    else
+      redirect_to root_path, notice: 'Not authorized'
     end
   end
 
