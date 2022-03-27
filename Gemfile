@@ -12,6 +12,7 @@ gem 'azure_media_service', '~> 0.3.0'
 gem "sprockets-rails"
 gem 'pundit', '~> 1.1', require: true
 gem 'rolify', '~> 5.2'
+
 # Use sqlite3 as the database for Active Record
 #gem "sqlite3", "~> 1.4"
 gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'

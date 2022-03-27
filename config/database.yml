@@ -2,10 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: aylmao
+  host: localhost
+  pool: 5
   username: postgres
   password: postgres
-
-production:
-  adapter: postgresql
-  encoding: utf8
-  database: uploads_production

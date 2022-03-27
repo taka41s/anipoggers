@@ -1,13 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<%if @user %>
-  Logged in as: <%=@user.login%>
+<%if current_user != nil %>
+  Logged in as: <%=current_user.login%>
   <%= button_to "Logout", logout_path, method: :delete %>
 <%end%>
 
 <div id="videos">
   <% @videos.each do |video| %>
-    <%= render video %>
-    <%= link_to image_tag(video.video.preview(resize_to_limit: [300, 170]).processed ), video %> 
+    <% render video %>
+    <%= link_to image_tag(video.video.preview(resize_to_limit: [300, 170]).processed ), video %>
+    <%= video.title%>
   <% end %>
 </div>

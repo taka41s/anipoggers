@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
             redirect_to '/videos'
         else
             flash.now[:notice] = "Invalid login or password provided"
-            render :login
+            redirect_to '/login' 
         end 
     end
 

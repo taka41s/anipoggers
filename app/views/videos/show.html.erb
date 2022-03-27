@@ -2,29 +2,15 @@
 
 <%= render @video %>
 
-
-
-
 <%if current_user == nil %>
-    <%= video_tag url_for(@video.video), controls: true %>
+    <%= video_tag url_for(@video.video), controls: true %>  
+
 <%elsif current_user.has_role? :newuser %>
     <%= video_tag url_for(@video.video), controls: true %>
+
 <%elsif current_user.has_role? :admin %>
     <%= video_tag url_for(@video.video), controls: true %>
     <%= link_to "Update", edit_video_path(@video) %>
     <%= button_to "Delete", @video, method: :delete %> 
 <%end%>
-
-
-
-
-
-<%# <%if current_user.has_role? :admin %> 
-    <%# <%= render @video %>
-<%# <%= video_tag url_for(@video.video), controls: true %>
-
-<%#    <%= link_to "Update", edit_video_path(@video) %> 
-<%#    <%= link_to "Home", videos_path %>
-<%#   <%= button_to "Delete", @video, method: :delete %>
-<%# <%end%> 
 
