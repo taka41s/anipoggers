@@ -11,3 +11,7 @@ Things you may want to cover:
  docker build
  docker-compose up -d
  ```
+ if u get some problem with ffprobe u may run
+```
+sudo apt-get install ffprobe
+ ```
